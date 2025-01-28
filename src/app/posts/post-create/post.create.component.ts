@@ -6,7 +6,6 @@ import { Component } from "@angular/core";
     selector: 'post-create',
     templateUrl: './post.create.component.html',
     styleUrls: ['./post.create.component.css'],
-
 })
 
 export class PostCreateComponent {
