@@ -5,5 +5,8 @@ body {
 h2 {
     color: rgb(39, 21, 139);
     font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.mat-slide-toggle {
+    color: #000;
 }
