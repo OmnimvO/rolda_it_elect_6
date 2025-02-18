@@ -1,7 +1,10 @@
 
-<h2>Hello World</h2>
 
-<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+<app-header></app-header>
 
-<post-create></post-create>
+<main>    
+    <app-post-create (postCreated)="onPostAdded($event)"></app-post-create>
+
+    <app-post-list [posts]="storedPosts"></app-post-list>
+</main>
 
