@@ -1,0 +1,23 @@
+
+mat-expansion-panel {
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+mat-expansion-panel-header {
+    font-size: 18px;
+    background: #00509d;
+    padding: 12px;
+}
+
+mat-action-row {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #ffffff;
+}

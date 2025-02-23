@@ -1,48 +1,53 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw; 
-  flex-direction: column;
-  text-align: center;
-  background-color: #f4f4f4;
-  font-family: Arial, sans-serif;
-  margin: 0; 
+mat-card {
+  background-color: #00296b; 
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5%;
 }
 
-h2 {
-  margin-bottom: 20px;
-  color: #333;
+mat-form-field {
+  width: 100%;
 }
 
-textarea {
-  width: 300px;
-  height: 100px;
+.mat-form-field-infix {
+  background-color: #00296b !important; 
   padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  resize: none;
+}
+
+.mat-input-element {
+  color: white !important;
+}
+
+.mat-form-field-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.mat-form-field-underline {
+  background-color: #ffcc00 !important; 
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #ffcc00 !important; 
+}
+
+mat-error {
+  color: #ffcc00 !important;
+}
+
+textarea.mat-input-element {
+  background-color: #00296b !important;
 }
 
 button {
-  margin-top: 15px;
+  background-color: #00509d !important; 
+  color: #ffffff !important;
+  border-radius: 8px;
   padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
 }
 
 button:hover {
-  background-color: #0056b3;
-}
-
-hr {
-  width: 100%;
-  border: 1px solid #ddd;
-  margin: 20px 0;
+  background-color: #003f7d !important;
 }
