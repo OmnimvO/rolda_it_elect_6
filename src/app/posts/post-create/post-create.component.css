@@ -1,0 +1,53 @@
+mat-card {
+  background-color: #00296b; 
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field-infix {
+  background-color: #00296b !important; 
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.mat-input-element {
+  color: white !important;
+}
+
+.mat-form-field-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.mat-form-field-underline {
+  background-color: #ffcc00 !important; 
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #ffcc00 !important; 
+}
+
+mat-error {
+  color: #ffcc00 !important;
+}
+
+textarea.mat-input-element {
+  background-color: #00296b !important;
+}
+
+button {
+  background-color: #00509d !important; 
+  color: #ffffff !important;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+button:hover {
+  background-color: #003f7d !important;
+}

@@ -1,16 +1,36 @@
+
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    width: 100vw; 
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-}
-
-h2 {
-    color: rgb(39, 21, 139);
-    font-weight: bold;
-}
-
-.mat-slide-toggle {
-    color: #000;
-}
-
+    width: 100%;
+  }
+  
+  app-header {
+    width: 100%;
+    text-align: center;
+  }
+  
+  app-post-create {
+    margin-top: 2%;
+    width: 60%; 
+    max-width: 600px; 
+    text-align: center;
+  }
+  
+  app-post-list {
+    width: 60%; 
+    max-width: 600px; 
+    text-align: center;
+  }
