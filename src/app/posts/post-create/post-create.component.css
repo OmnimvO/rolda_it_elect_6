@@ -1,6 +1,6 @@
 mat-card {
   background-color: #00296b; 
-  color: #ffffff;
+  color: black;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -15,6 +15,10 @@ mat-form-field {
   background-color: #00296b !important; 
   padding: 10px;
   border-radius: 5px;
+}
+
+.mat-form-field input, textarea {
+  color: #000;
 }
 
 .mat-input-element {
@@ -37,16 +41,13 @@ mat-error {
   color: #ffcc00 !important;
 }
 
-textarea.mat-input-element {
-  background-color: #00296b !important;
-}
 
 button {
   background-color: #00509d !important; 
   color: #ffffff !important;
   border-radius: 8px;
   padding: 10px 20px;
-}
+}   
 
 button:hover {
   background-color: #003f7d !important;
