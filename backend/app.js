@@ -1,8 +1,23 @@
 const express = require('express');
+const mongoose = require('mongoose');
+
 
 const app = express();
 const bodyParser = require('body-parser');
 
+const Post = require('./models/post');
+
+
+mongoose.connect("mongodb+srv://tinmaerolda:I0EzV6GnacxuTfRI@cluster0.jehjs.mongodb.net/ateneodb?retryWrites=true&w=majority&appName=Cluster0")
+    .then(() => {
+        console.log('Connected to database');
+    })
+    .catch(() => {
+        console.log('Connection Failed');
+    })
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', "*");
@@ -14,35 +29,56 @@ app.use((req, res, next) => {
 })
 
 app.post("/api/posts", (req, res, next) => {
-    const post = req.body;
-    console.log(post);
+    const post = new Post ({
+        title: req.body.title,
+        content: req.body.content
+});
+
+    post.save();
     res.status(201).json({
-        message: 'Post added successfully',
-        post
+        message: 'Post added successfully'
     });
 })
 
 
-app.use('/api/posts', (req, res, next) => {
-    const posts = 
-        [
-            {
-            id: "jetley",
-            title: "first title from server-side",
-            content: "first content from server-side",
-            },
-
-            {
-                id: "marco",
-                title: "second title from server-side",
-                content: "second content from server-side"
-            },
-        ];
-
-    res.status(200).json({
-        message: 'Posts successfully fetched',
-        posts: posts
-    });
+app.get("/api/posts", (req, res, next) => {
+    Post.find()
+        .then(documents => {
+            res.status(200).json({
+                message: 'Posts successfully fetched',
+                posts: documents
+            });
+        });
 });
+
+app.delete("/api/posts/:id", (req, res, next) => {
+    Post.deleteOne ({ _id: req.params.id }).then(result => {
+        console.log(result);
+        console.log(req.params.id);
+        res.status(200).json({ message: "Post deleted" });
+    })
+});
+
+// app.use('/api/posts', (req, res, next) => {
+//     const posts = 
+//         [
+//             {
+//             id: "jetley",
+//             title: "first title from server-side",
+//             content: "first content from server-side",
+//             },
+
+//             {
+//                 id: "marco",
+//                 title: "second title from server-side",
+//                 content: "second content from server-side"
+//             },
+//         ];
+
+//     res.status(200).json({
+//         message: 'Posts successfully fetched',
+//         posts: posts
+//     });
+// });
 
 module.exports = app;
