@@ -1,54 +1,63 @@
-mat-card {
-  background-color: #00296b; 
-  color: black;
+.mat-form-field {
+  height: 100vh;
+}
+
+textarea {
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  background-color: #7a7575bc;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  margin-bottom: 5%;
+  text-align: center;
 }
-
-mat-form-field {
-  width: 100%;
-}
-
-.mat-form-field-infix {
-  background-color: #00296b !important; 
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.mat-form-field input, textarea {
-  color: #000;
-}
-
-.mat-input-element {
-  color: white !important;
-}
-
-.mat-form-field-label {
-  color: rgba(255, 255, 255, 0.7) !important;
-}
-
-.mat-form-field-underline {
-  background-color: #ffcc00 !important; 
-}
-
-.mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color: #ffcc00 !important; 
-}
-
-mat-error {
-  color: #ffcc00 !important;
-}
-
 
 button {
-  background-color: #00509d !important; 
-  color: #ffffff !important;
-  border-radius: 8px;
-  padding: 10px 20px;
-}   
+  width: 12%;
+  padding: 10px;
+  background-color: #a9a4a4;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  font-size: 15px;
+}
 
-button:hover {
-  background-color: #003f7d !important;
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+p {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type='file']{  
+  visibility: hidden;  
+}  
+
+.image-preview {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  margin: 10px auto;
+  width: 100%;
+  max-width: 400px; 
+  height: 300px; 
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f8f8f8;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover; 
+  border-radius: 10px;
 }

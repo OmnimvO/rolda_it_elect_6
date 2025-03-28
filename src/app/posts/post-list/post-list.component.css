@@ -1,23 +1,47 @@
+mat-card {
+    margin-top: 5%;
+    margin-right: 5%;
+}
+
+mat-accordion {
+    padding: 5%;
+    width: 100%;
+    background: #00296b;
+}
 
 mat-expansion-panel {
-    border-radius: 8px;
+    border-radius: 5px;
     margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 mat-expansion-panel-header {
-    font-size: 18px;
+    font-size: 15px;
     background: #00509d;
-    padding: 12px;
+    padding: 5px;
 }
 
 mat-action-row {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px;
+    margin-top: 2%;
 }
 
 p {
-    font-size: 16px;
+    font-size: 15px;
     color: #ffffff;
+    text-align: center;
 }
+
+.post-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .post-image img {
+    width: 500px;  
+    height: auto;  
+    border-radius: 5px;  
+    object-fit: cover; 
+  }
+  
