@@ -1,47 +1,175 @@
 mat-card {
-    margin-top: 5%;
-    margin-right: 5%;
+  margin: 5% 5% 0 5%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+mat-spinner {
+  display: block;
+  margin: 20px auto;
 }
 
 mat-accordion {
-    padding: 5%;
-    width: 100%;
-    background: #00296b;
+  padding: 2% 5%;
+  width: 100%;
+  background-color: #00296b;
+  box-sizing: border-box;
+}
+
+mat-paginator {
+  width: 100%;
+  max-width: 1003px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 mat-expansion-panel {
-    border-radius: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #003a8c;
+  color: white;
 }
 
 mat-expansion-panel-header {
-    font-size: 15px;
-    background: #00509d;
-    padding: 5px;
+  font-size: 15px;
+  background-color: #00509d;
+  padding: 8px 16px;
+  color: white;
 }
 
 mat-action-row {
-    margin-top: 2%;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 }
 
 p {
-    font-size: 15px;
-    color: #ffffff;
-    text-align: center;
+  font-size: 15px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0 20px 10px 20px;
+  word-wrap: break-word;
 }
 
 .post-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px 0;
-  }
-  
-  .post-image img {
-    width: 500px;  
-    height: auto;  
-    border-radius: 5px;  
-    object-fit: cover; 
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.post-image img {
+  max-width: 100%;
+  max-height: 350px;
+  border-radius: 5px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.post-image img:hover {
+  transform: scale(1.05);
+}
+
+.reaction-bar {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.reaction-bar button[mat-button] {
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  min-width: 80px;
+  justify-content: center;
+}
+
+.reaction-bar button[mat-button] span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.reaction-bar button[mat-button]:hover,
+.reaction-bar button[mat-button].active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.reaction-bar button[mat-stroked-button] {
+  margin-left: 12px;
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+}
+
+.comment-section {
+  margin-top: 16px;
+  color: white;
+}
+
+.comment-section h4 {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+.comment-section .comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  border-radius: 5px;
+  word-wrap: break-word;
+}
+
+.comment-section .comment strong {
+  color: #cce5ff;
+}
+
+.comment-section button[mat-icon-button] {
+  color: #ff6b6b;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.comment-section button[mat-icon-button]:hover {
+  background-color: rgba(255, 107, 107, 0.2);
+  border-radius: 50%;
+}
+
+.comment-section mat-form-field {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.comment-section button[mat-stroked-button] {
+  margin-top: 4px;
+  color: #d4e6f7;
+  border-color: #fff9f9;
+}
+
+.comment-section button[mat-stroked-button]:disabled {
+  color: #999;
+  border-color: #999;
+}

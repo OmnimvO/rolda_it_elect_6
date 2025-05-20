@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { PostsService } from "../posts.service";
 import { Post } from "../post.model";
 import { mimetype } from "./mime-type.validator";
-
+import { NotificationService } from "src/app/header/notification.service";
 
 @Component({
   selector: "app-post-create",
@@ -19,13 +19,12 @@ export class PostCreateComponent implements OnInit {
   form!: FormGroup;
   Pickedimage: string | any;
 
-
   constructor(
     public postsService: PostsService,
     public route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService 
   ) {}
-
 
   ngOnInit(): void {
     this.isLoading = false;
@@ -52,7 +51,8 @@ export class PostCreateComponent implements OnInit {
               id: postData._id,
               title: postData.title,
               content: postData.content,
-              imagePath: postData.imagePath
+              imagePath: postData.imagePath,
+               creator: postData.creator
             };
             this.form.setValue({
               title: this.post.title,
@@ -68,6 +68,9 @@ export class PostCreateComponent implements OnInit {
       }
     });
   }
+
+
+
 
   PickedImage(event: Event) {
     const file = (event.target as HTMLInputElement)?.files?.[0];
@@ -85,6 +88,11 @@ export class PostCreateComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
+ 
+ 
+
+
+
 
   onAddPost() {
     if (this.form.invalid) {
@@ -112,7 +120,14 @@ export class PostCreateComponent implements OnInit {
     this.router.navigate(["/"]);
   }
  
+ 
 }
+
+
+
+
+
+
 
 
 

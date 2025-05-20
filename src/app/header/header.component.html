@@ -1,15 +1,32 @@
 <mat-toolbar>
-    <span>
-        <a routerLink= "/">
-            Ateneo De Manila University
-        </a>
-    </span>
-    <span class="spacer"></span>
-        <ul>
-            <li>
-                <a matt-button routerLink= "/create" routerLinkActive = "mat-accent">
-                    New Post
-                </a>
-            </li>
-        </ul>
+  <span><a routerLink="/" aria-label="Home">Ateneo De Manila University</a></span>
+  <span class="spacer"></span>
+
+  <button mat-icon-button (click)="toggleNotifications()" aria-label="Show notifications">
+    <mat-icon>notifications</mat-icon>
+    <span *ngIf="notifications.length > 0" class="notification-badge">{{ notifications.length }}</span>
+  </button>
+
+  <div *ngIf="showNotifications" class="notification-dropdown">
+    <div *ngFor="let note of notifications" class="notification-item">{{ note }}</div>
+    <div *ngIf="notifications.length === 0">No notifications</div>
+  </div>
+
+  <ul>
+    <li *ngIf="userIsAuthenticated"> 
+      <a mat-button routerLink="/create" routerLinkActive="mat-accent" aria-label="Create New Post">
+          New Post
+      </a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">  
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>  
+    </li>  
+    <li *ngIf="!userIsAuthenticated">  
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>  
+    </li>
+    <li *ngIf="userIsAuthenticated">  
+      <button mat-button (click)="onLogout()">Logout</button>  
+    </li>  
+  </ul>
 </mat-toolbar>
+
