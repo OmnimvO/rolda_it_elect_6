@@ -16,7 +16,8 @@ interface Post {
 export class AppComponent {
   title = 'rolda';
   storedPosts: Post[] = [];
-  onPostAdded(post: any): void {
+
+  onPostAdded(post: Post): void {
     this.storedPosts.push(post);
   }
 }

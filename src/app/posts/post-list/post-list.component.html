@@ -1,21 +1,91 @@
 <mat-card>
-    
-    <mat-accordion multi="true" *ngIf="posts.length>=0">
-       <mat-expansion-panel *ngFor="let post of posts">
-           <mat-expansion-panel-header>{{post.title}}</mat-expansion-panel-header>
-           <div class= "post-image">  
-            <img [src]= "post.imagePath" [alt]= "post.title">  
-          </div>  
-           <P>{{post.content}}</P>
-           <mat-action-row>
-               <a mat-flat-button color="accent" [routerLink] = "['/edit',post.id]">EDIT</a>  
-               <button mat-flat-button color="accent"(click)="onDelete(post.id)">DELETE</button>
-           </mat-action-row>
-       </mat-expansion-panel>
-   </mat-accordion>
-   <p *ngIf="posts.length<=0"> No post added yet</p>
+
+  <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 10px;">
+    <mat-label>Search by Title</mat-label>
+    <input
+      matInput
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchTermChanged()"
+      placeholder="Enter title to search" />
+  </mat-form-field>
+
+  <mat-spinner *ngIf="Loading"></mat-spinner>
+
+  <mat-accordion multi="true" *ngIf="filteredPosts.length >= 0">
+    <mat-expansion-panel *ngFor="let post of filteredPosts">
+      <mat-expansion-panel-header>{{ post.title }}</mat-expansion-panel-header>
+
+      <div class="post-image">
+        <img [src]="post.imagePath" [alt]="post.title" />
+      </div>
+      <p>{{ post.content }}</p>
+
+      <div class="reaction-bar" style="margin-bottom: 10px;">
+        <button *ngFor="let reaction of reactions"
+          mat-button
+          color="primary"
+          [class.active]="userReaction(post.id) === reaction.name"
+          (click)="toggleReaction(post.id, reaction.name)"
+          [matTooltip]="reaction.name">
+          <span>{{reaction.emoji}}</span> {{getReactionCount(post.id, reaction.name)}}
+        </button>
+
+        <button
+          mat-stroked-button
+          color="warn"
+          *ngIf="userReaction(post.id)"
+          (click)="undoReaction(post.id)"
+          style="margin-left: 12px;">
+          Undo Reaction
+        </button>
+      </div>
+
+      <div class="comment-section">
+        <h4>Comments</h4>
+
+        <div *ngIf="post.comments && post.comments.length > 0; else noComments">
+          <div *ngFor="let comment of post.comments; let i = index" class="comment" style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <strong>{{ comment.user }}:</strong> {{ comment.text }}
+            </div>
+            <button
+              mat-icon-button
+              color="warn"
+              aria-label="Delete comment"
+              (click)="deleteComment(post.id, i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+        <ng-template #noComments>
+          <p>No comments yet.</p>
+        </ng-template>
+
+        <mat-form-field appearance="outline" style="width: 100%; margin-top: 8px;">
+          <input matInput placeholder="Write a comment..."
+                 [(ngModel)]="newComments[post.id]"
+                 (keyup.enter)="addComment(post.id)" />
+        </mat-form-field>
+        <button mat-stroked-button color="accent" (click)="addComment(post.id)" [disabled]="!newComments[post.id]?.trim()">
+          Add Comment
+        </button>
+      </div>
+
+      <mat-action-row *ngIf="userIsAuthenticated && post.creator === userId" style="margin-top: 10px;">
+        <a mat-flat-button color="accent" [routerLink]="['/edit', post.id]">EDIT</a>
+        <button mat-flat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-paginator
+    [length]="totalposts"
+    [pageSize]="postperpage"
+    [pageSizeOptions]="pageSizeOption"
+    (page)="onChangedPage($event)"
+    *ngIf="filteredPosts.length > 0">
+  </mat-paginator>
+
+  <p *ngIf="!Loading && filteredPosts.length <= 0">No post added yet</p>
 
 </mat-card>
-
-
-
