@@ -210,7 +210,6 @@ export class PostListComponent implements OnInit, OnDestroy {
     localStorage.setItem('userReactions', JSON.stringify(this.userReactions));
   }
 
-  // Undo reaction by removing any reaction the user has on the post
   undoReaction(postId: string): void {
     const currentReaction = this.userReactions[postId];
     if (!currentReaction) return;
@@ -280,7 +279,6 @@ export class PostListComponent implements OnInit, OnDestroy {
     );
   }
 
-  // Delete a comment by its index in the post's comments array
   deleteComment(postId: string, commentIndex: number): void {
     const post = this.filteredPosts.find(p => p.id === postId);
     if (!post || !post.comments || commentIndex < 0 || commentIndex >= post.comments.length) {
